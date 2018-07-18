@@ -10,7 +10,7 @@
   position: absolute;
   width: 25px;
   height: 25px;
-  border-radius: 50% 50% 50% 0;
+  border-radius: 90% 70% 90% 0;
   border: 2px solid black;
   background: red;
   transform: rotate(-45deg);

@@ -2,11 +2,11 @@ import React from 'react';
 
 function InfoWindow(props) {
 
-  const { toggleInfoOpen } = props;
+  const { toggleInfoOpen, name } = props;
 
   return(
-    <div className="info-window" onClick={() => toggleInfoOpen()}>
-      <h1>{ props.name }</h1>
+    <div className="info-window" onClick={() => toggleInfoOpen('')}>
+      <h1>{ name }</h1>
     </div>
   )
 }

@@ -6,17 +6,17 @@ import Marker from './Marker.js'
 class Map extends Component {
 
     state = {
-      isOpen: false
+      openIndex:'',
     }
 
-    toggleInfoOpen = () => {
-      if(this.state.isOpen) {
+    toggleInfoOpen = (index) => {
+      if(this.state.openIndex === '') {
         this.setState({
-          isOpen: false
+          openIndex: index
         })
       } else {
         this.setState({
-          isOpen: true
+          openIndex: ''
         })
       }
     }
@@ -33,14 +33,15 @@ class Map extends Component {
             defaultCenter={{lat: 51.801881, lng: -4.971565}}
             defaultZoom={10}
           >
-          {locations.map((location) => (
+          {locations.map((location, i) => (
               <Marker
                 key={ location.venue.id }
                 lat={ location.venue.location.lat}
                 lng={ location.venue.location.lng }
                 name={ location.venue.name }
                 toggleInfoOpen={toggleInfoOpen}
-                infoWindowOpen={ this.state.isOpen }
+                openIndex={ this.state.openIndex }
+                index = { i }
               />
             ))}
           </GoogleMapReact>
