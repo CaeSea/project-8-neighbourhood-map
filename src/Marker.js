@@ -1,9 +1,19 @@
 import React from 'react';
+import InfoWindow from './InfoWindow.js'
 
-function Marker() {
+function Marker(props) {
+
+  const { toggleInfoOpen, infoWindowOpen } = props;
 
   return(
-    <div className="marker"></div>
+    <div className="marker" onClick={() => toggleInfoOpen()}>
+    {infoWindowOpen &&
+      <InfoWindow
+        toggleInfoOpen={ toggleInfoOpen }
+        name={ props.name }>
+      </InfoWindow>
+    }
+    </div>
   )
 }
 

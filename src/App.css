@@ -6,6 +6,7 @@
 }
 
 .marker {
+  cursor: pointer;
   position: absolute;
   width: 25px;
   height: 25px;
@@ -16,4 +17,17 @@
   left: 50%;
   top: 50%;
   margin: -20px 0 0 -20px;
+}
+
+/*--- InfoWindow ---*/
+
+.info-window {
+  cursor: pointer;
+  position: relative;
+  top: -100px;
+  left: -35px;
+  width: 200px;
+  height: 100px;
+  border: 2px solid black;
+  transform: rotate(45deg);
 }
