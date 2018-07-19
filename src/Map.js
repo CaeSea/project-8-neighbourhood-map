@@ -1,34 +1,15 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Marker from './Marker.js'
-//import InfoWindow from './InfoWindow.js'
 
 class Map extends Component {
 
-    state = {
-      openIndex:'',
-    }
-
-    toggleInfoOpen = (index) => {
-      let currentIndex = index;
-      if(this.state.openIndex === '' || this.state.openIndex !== currentIndex) {
-        this.setState({
-          openIndex: index
-        })
-      } else {
-        this.setState({
-          openIndex: ''
-        })
-      }
-    }
-
     render() {
 
-      const { locations } = this.props;
-      const { toggleInfoOpen } = this;
+      const { locations, toggleInfoOpen, openIndex } = this.props;
 
       return (
-        <div style={{ height: '100vh', width: '80%' }}>
+        <div className="map-content">
           <GoogleMapReact
             bootstrapURLKeys={{ key: 'AIzaSyB75r35CSSKNhFtuJnU-W0DV7X1hee6AIU' }}
             defaultCenter={{lat: 51.801881, lng: -4.971565}}
@@ -41,8 +22,9 @@ class Map extends Component {
                 lng={ location.venue.location.lng }
                 name={ location.venue.name }
                 img={ location.venue.photo }
+                address={ location.venue.location.formattedAddress.join(', ') }
                 toggleInfoOpen={toggleInfoOpen}
-                openIndex={ this.state.openIndex }
+                openIndex={ openIndex }
                 index = { i }
               />
             ))}
