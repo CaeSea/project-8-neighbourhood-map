@@ -10,7 +10,8 @@ class Map extends Component {
     }
 
     toggleInfoOpen = (index) => {
-      if(this.state.openIndex === '') {
+      let currentIndex = index;
+      if(this.state.openIndex === '' || this.state.openIndex !== currentIndex) {
         this.setState({
           openIndex: index
         })
@@ -39,6 +40,7 @@ class Map extends Component {
                 lat={ location.venue.location.lat}
                 lng={ location.venue.location.lng }
                 name={ location.venue.name }
+                img={ location.venue.photo }
                 toggleInfoOpen={toggleInfoOpen}
                 openIndex={ this.state.openIndex }
                 index = { i }

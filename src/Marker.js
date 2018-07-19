@@ -3,14 +3,15 @@ import InfoWindow from './InfoWindow.js'
 
 function Marker(props) {
 
-  const { toggleInfoOpen, openIndex, name, index } = props;
+  const { toggleInfoOpen, openIndex, name, index, img } = props;
 
   return(
     <div className="marker" onClick={() => toggleInfoOpen(index)}>
     {openIndex === index &&
       <InfoWindow
         toggleInfoOpen={ toggleInfoOpen }
-        name={ name }>
+        name={ name }
+        img= { img } >
       </InfoWindow>
     }
     </div>

@@ -26,8 +26,16 @@
   position: relative;
   top: -100px;
   left: -35px;
-  width: 200px;
-  height: 100px;
+  width: 400px;
+  height: 600px;
   border: 2px solid black;
   transform: rotate(45deg);
+  z-index: 1000;
+}
+
+.location-img {
+  width: 300px;
+  height: 500px;
+  background-size: cover;
+
 }
