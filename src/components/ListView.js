@@ -37,7 +37,7 @@ class ListView extends Component {
         <ul className="list-locations">
           {showingSites.map((location, i) => (
             <li key={location.venue.id}>
-              <button className="listview-location-name" onClick={() => toggleInfoOpen(i)}>
+              <button className="listview-location-name" onClick={() => toggleInfoOpen(location.venue.id)}>
                 {location.venue.name}
               </button>
             </li>

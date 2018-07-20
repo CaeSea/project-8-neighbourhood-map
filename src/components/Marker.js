@@ -5,13 +5,13 @@ class Marker extends Component {
 
   render() {
 
-    const { toggleInfoOpen, openIndex, name, index, img, address } = this.props;
-    let markerClass = openIndex===index ? "blueMarker" : "redMarker";
+    const { toggleInfoOpen, locationId, name, indexedLocation, img, address, index } = this.props;
+    let markerClass = locationId===indexedLocation ? "blueMarker" : "redMarker";
 
     return(
-      <div className="marker-wrap" onClick={() => toggleInfoOpen(index)}>
+      <div className="marker-wrap" onClick={() => toggleInfoOpen(indexedLocation)}>
         <div className={"marker "+ markerClass} id={"marker"+index}></div>
-        {openIndex === index &&
+        {locationId === indexedLocation &&
           <InfoWindow
             toggleInfoOpen={ toggleInfoOpen }
             name={ name }

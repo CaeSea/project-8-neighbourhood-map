@@ -6,7 +6,7 @@ class Map extends Component {
 
     render() {
 
-      const { locations, toggleInfoOpen, openIndex } = this.props;
+      const { locations, toggleInfoOpen, locationId } = this.props;
 
       return (
         <div className="map-content">
@@ -24,7 +24,8 @@ class Map extends Component {
                 img={ location.venue.photo }
                 address={ location.venue.location.formattedAddress.join(', ') }
                 toggleInfoOpen={toggleInfoOpen}
-                openIndex={ openIndex }
+                locationId={ locationId }
+                indexedLocation = { location.venue.id }
                 index = { i }
               />
             ))}

@@ -7,18 +7,18 @@ class App extends Component {
 
   state = {
     locations: [],
-    openIndex:''
+    locationId:''
   }
 
-  toggleInfoOpen = (index) => {
-    let currentIndex = index;
-    if(this.state.openIndex === '' || this.state.openIndex !== currentIndex) {
+  toggleInfoOpen = (locationId) => {
+    let currentLocationId = locationId;
+    if(this.state.locationId === '' || this.state.locationId !== currentLocationId) {
       this.setState({
-        openIndex: index
+        locationId: currentLocationId
       })
     } else {
       this.setState({
-        openIndex: ''
+        locationId: ''
       })
     }
   }
@@ -77,8 +77,8 @@ class App extends Component {
   }
 
   render() {
-    const { locations, openIndex, red } = this.state;
-    const { toggleInfoOpen, changeColor } = this;
+    const { locations, locationId} = this.state;
+    const { toggleInfoOpen } = this;
     return (
       <div className="App">
         <section className="listview">
@@ -91,7 +91,7 @@ class App extends Component {
           <Map
             locations = { locations }
             toggleInfoOpen = { toggleInfoOpen }
-            openIndex = { openIndex }
+            locationId = { locationId }
           />
         </section>
       </div>
