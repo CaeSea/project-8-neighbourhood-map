@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 function InfoWindow(props) {
 
@@ -13,6 +14,12 @@ function InfoWindow(props) {
       </div>
     </div>
   )
+}
+
+InfoWindow.propTypes = {
+  toggleInfoOpen: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired
 }
 
 export default InfoWindow

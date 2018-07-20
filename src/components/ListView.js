@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 
@@ -45,6 +46,11 @@ class ListView extends Component {
         </ul>
       </div>
     )
+  }
+
+  static propTypes = {
+    locations: PropTypes.array.isRequired,
+    toggleInfoOpen: PropTypes.func.isRequired
   }
 
 }

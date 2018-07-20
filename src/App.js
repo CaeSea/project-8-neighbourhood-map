@@ -47,7 +47,7 @@ class App extends Component {
       this.setState({ //Set the components state with the locations.
         locations: response.response.groups[0].items
       });
-      this.assignPhotos();
+      //this.assignPhotos();
     }).catch(error => {
       console.log('There was an error fetching the location information', error)
       //Let the user know there was an error fetching results and to try again.
