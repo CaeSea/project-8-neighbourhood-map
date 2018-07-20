@@ -47,14 +47,13 @@ class App extends Component {
       this.setState({ //Set the components state with the locations.
         locations: response.response.groups[0].items
       });
-      //this.assignPhotos();
+      this.assignPhotos();
     }).catch(error => {
       console.log('There was an error fetching the location information', error)
       //Let the user know there was an error fetching results and to try again.
       this.setState({errorLoadingAPI: true}) // Set the state to try and force reload. If not then set the state to show the error message to user on the page.
     });
   }
-
 
   getPhotos = (venueId, location) => {
 
@@ -65,12 +64,19 @@ class App extends Component {
 
     fetch(venuesEndpoint, {
       method: 'GET'
-    }).then(response => response.json()).then(response => {
+    }).then((response) => {
+      if(response.ok){
+        return response.json();
+      }
+      throw response;
+    }).then((response) => {
       if(response.response.photos.count > 0) { //IF THE LOCATION HAS A PHOTO!!
         location.venue.photo = response.response.photos.items[0].prefix + '300x500' + response.response.photos.items[0].suffix;
       }
     }).catch(error => {
       console.log('There was an error fetching the location photos', error)
+      //Let the user know there was an error fetching results and to try again.
+      this.setState({errorLoadingAPI: true}) // Set the state to try and force reload. If not then set the state to show the error message to user on the page.
     });
   }
 
