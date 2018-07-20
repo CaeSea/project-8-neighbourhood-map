@@ -57,20 +57,9 @@ ul.list-locations {
 }
 
 .search-wrapper input[type="search"] {
-  width: 79%;
+  width: 90%;
   font-size: 1em;
   padding: 10px;
-}
-
-.search-btn {
-  cursor: pointer;
-  font-size: 0.9em;
-  font-weight: bold;
-  padding: 5px;
-  width: 19%;
-  background-color: #ff3333;
-  color: white;
-  border: none;
 }
 
 /*--- MAP ---*/

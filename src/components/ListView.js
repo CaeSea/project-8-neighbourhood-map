@@ -26,12 +26,13 @@ class ListView extends Component {
       showingSites = locations;
     }
 
+    showingSites.sort(sortBy('venue.name'))
+
     return (
       <div className="listview-content">
         <h1>Camping Sites in West Wales</h1>
         <div className="search-wrapper">
           <input type="search" placeholder="Search..." value={query} onChange={(event) => updateQuery(event.target.value) }/>
-          <button className="search-btn">Filter</button>
         </div>
         <ul className="list-locations">
           {showingSites.map((location, i) => (
