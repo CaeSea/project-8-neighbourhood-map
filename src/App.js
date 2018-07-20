@@ -7,7 +7,8 @@ class App extends Component {
 
   state = {
     locations: [],
-    locationId:''
+    locationId:'',
+    errorLoadingAPI: false
   }
 
   toggleInfoOpen = (locationId) => {
@@ -37,15 +38,23 @@ class App extends Component {
 
     fetch(venuesEndpoint + new URLSearchParams(params), {
       method: 'GET'
-    }).then(response => response.json()).then(response => {
-      this.setState({locations: response.response.groups[0].items}); //Set the components state
+    }).then((response) => {
+      if(response.ok) { //Checks that the response was recieved correctly from the FourSquare API.
+        return response.json();
+      }
+      throw response;
+    }).then((response) => {
+      this.setState({ //Set the components state with the locations.
+        locations: response.response.groups[0].items
+      });
       //this.assignPhotos();
-      console.log(this.state.locations);
     }).catch(error => {
       console.log('There was an error fetching the location information', error)
       //Let the user know there was an error fetching results and to try again.
+      this.setState({errorLoadingAPI: true}) // Set the state to try and force reload. If not then set the state to show the error message to user on the page.
     });
   }
+
 
   getPhotos = (venueId, location) => {
 
@@ -77,11 +86,14 @@ class App extends Component {
   }
 
   render() {
-    const { locations, locationId} = this.state;
+    const { locations, locationId, errorLoadingAPI} = this.state;
     const { toggleInfoOpen } = this;
     return (
       <div className="App">
         <section className="listview">
+        {errorLoadingAPI &&
+          <strong className="error">Warning! There was an error retrieving the data needed to run the app, please refresh the page.</strong>
+        }
           <ListView
             locations = { locations }
             toggleInfoOpen = { toggleInfoOpen }

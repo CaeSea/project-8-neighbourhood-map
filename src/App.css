@@ -10,6 +10,7 @@ body {
 
 section.listview {
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
   width: 25%;
   background-color: #484848;
@@ -163,4 +164,11 @@ section.map-container {
   height: 125px;
   background-size: 100% 100%;
   margin-bottom: 5px;
+}
+
+.error {
+  width: 100%;
+  color: red;
+  font-size: 1.5em;
+  padding: 5px;
 }

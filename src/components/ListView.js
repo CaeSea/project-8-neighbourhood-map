@@ -47,15 +47,6 @@ class ListView extends Component {
     )
   }
 
-}/*
-<ol className="books-grid">
-        {booksOnShelf.map((book) => (
-          <li key={book.id}>
-            <BookListing
-              book = {book}
-              changeBookShelf = {changeBookShelf}
-            />
-          </li>
-        ))}
-      </ol>*/
+}
+
 export default ListView;
