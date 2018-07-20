@@ -74,11 +74,12 @@ class App extends Component {
 
   componentDidMount() {
     this.getSites();
+    console.log(this.props.children)
   }
 
   render() {
-    const { locations, openIndex } = this.state;
-    const { toggleInfoOpen } = this;
+    const { locations, openIndex, red } = this.state;
+    const { toggleInfoOpen, changeColor } = this;
     return (
       <div className="App">
         <section className="listview">

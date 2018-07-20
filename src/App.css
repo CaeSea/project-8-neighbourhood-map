@@ -70,13 +70,23 @@ section.map-container {
   height: 25px;
   border-radius: 90% 70% 90% 0;
   border: 2px solid black;
-  background: red;
   transform: rotate(-45deg);
   left: 50%;
   top: 50%;
   margin: -20px 0 0 -20px;
 }
 
+.marker-wrap>*:hover {
+  border: 2px solid yellow;
+}
+
+.redMarker {
+  background-color: red;
+}
+
+.whiteMarker {
+  background-color: white;
+}
 /*--- InfoWindow ---*/
 
 .info-window {
