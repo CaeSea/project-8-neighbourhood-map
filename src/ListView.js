@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Search from './Search.js'
 
 class ListView extends Component {
 
@@ -8,6 +8,9 @@ class ListView extends Component {
     return (
       <div className="listview-content">
         <h1>Camping Sites in West Wales</h1>
+
+        <Search/>
+        
         <ul className="list-locations">
           {locations.map((location, i) => (
             <li key={location.venue.id}>

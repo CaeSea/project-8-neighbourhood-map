@@ -32,7 +32,7 @@ class App extends Component {
       limit: 10, //The max number of venues to load
       query: 'camping', //The type of venues we want to query
       v: '20130619', //The version of the API.
-      ll: '51.801881,-4.971565' //The latitude and longitude of St. Davids Cathedral, West Wales
+      ll: '51.801881,-4.971565' //The latitude and longitude of Haverfordwest, West Wales
     };
 
     fetch(venuesEndpoint + new URLSearchParams(params), {
@@ -74,7 +74,6 @@ class App extends Component {
 
   componentDidMount() {
     this.getSites();
-    console.log(this.props.children)
   }
 
   render() {
