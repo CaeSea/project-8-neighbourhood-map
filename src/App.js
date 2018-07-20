@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Map from './Map.js'
-import ListView from './ListView.js'
+import Map from './components/Map.js'
+import ListView from './components/ListView.js'
 
 class App extends Component {
 

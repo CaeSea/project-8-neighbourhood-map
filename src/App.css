@@ -46,7 +46,7 @@ ul.list-locations {
 }
 
 .listview-location-name:hover {
-  color: red;
+  color: #ff3333;
 }
 
 /*---- Search Bar ---*/
@@ -103,15 +103,15 @@ section.map-container {
 }
 
 .marker-wrap>*:hover {
-  border: 2px solid yellow;
+  border: 1px solid black;
 }
 
 .redMarker {
-  background-color: red;
+  background-color: #ff3333;
 }
 
-.whiteMarker {
-  background-color: white;
+.blueMarker {
+  background-color: blue;
 }
 /*--- InfoWindow ---*/
 

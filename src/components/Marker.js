@@ -6,7 +6,7 @@ class Marker extends Component {
   render() {
 
     const { toggleInfoOpen, openIndex, name, index, img, address } = this.props;
-    let markerClass = openIndex===index ? "whiteMarker" : "redMarker";
+    let markerClass = openIndex===index ? "blueMarker" : "redMarker";
 
     return(
       <div className="marker-wrap" onClick={() => toggleInfoOpen(index)}>

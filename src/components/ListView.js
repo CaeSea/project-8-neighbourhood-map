@@ -1,18 +1,40 @@
 import React, { Component } from 'react';
-import Search from './Search.js'
+import escapeRegExp from 'escape-string-regexp'
+import sortBy from 'sort-by'
 
 class ListView extends Component {
 
+  state = {
+    query: ''
+  }
+
+  updateQuery = (query) => {
+    this.setState({ query: query.trim() })
+  }
+
   render() {
+
     const { locations, toggleInfoOpen } = this.props;
+    const { query } = this.state;
+    const { updateQuery } = this;
+
+    let showingSites;
+    if(query) {
+      const match = new RegExp(escapeRegExp(query), 'i')
+      showingSites = locations.filter((location) => match.test(location.venue.name))
+    } else {
+      showingSites = locations;
+    }
+
     return (
       <div className="listview-content">
         <h1>Camping Sites in West Wales</h1>
-
-        <Search/>
-        
+        <div className="search-wrapper">
+          <input type="search" placeholder="Search..." value={query} onChange={(event) => updateQuery(event.target.value) }/>
+          <button className="search-btn">Filter</button>
+        </div>
         <ul className="list-locations">
-          {locations.map((location, i) => (
+          {showingSites.map((location, i) => (
             <li key={location.venue.id}>
               <button className="listview-location-name" onClick={() => toggleInfoOpen(i)}>
                 {location.venue.name}
