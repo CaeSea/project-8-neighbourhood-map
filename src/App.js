@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Map from './components/Map.js'
-import ListView from './components/ListView.js'
+import Main from './components/Main.js'
 
 class App extends Component {
 
@@ -96,22 +95,14 @@ class App extends Component {
     const { toggleInfoOpen } = this;
     return (
       <div className="App">
-        <section className="listview">
-        {errorLoadingAPI &&
-          <strong className="error">Warning! There was an error retrieving the data needed to run the app, please refresh the page.</strong>
-        }
-          <ListView
-            locations = { locations }
-            toggleInfoOpen = { toggleInfoOpen }
-          />
-        </section>
-        <section className="map-container">
-          <Map
-            locations = { locations }
-            toggleInfoOpen = { toggleInfoOpen }
-            locationId = { locationId }
-          />
-        </section>
+      {errorLoadingAPI &&
+        <strong className="error">Warning! There was an error retrieving the data needed to run the app, please refresh the page.</strong>
+      }
+        <Main
+          locations = { locations }
+          toggleInfoOpen = { toggleInfoOpen }
+          locationId = { locationId }
+        />
       </div>
     );
   }

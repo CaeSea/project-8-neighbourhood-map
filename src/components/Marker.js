@@ -6,7 +6,7 @@ function Marker(props) {
 
   const { toggleInfoOpen, locationId, name, indexedLocation, img, address, index } = props;
   let markerClass = locationId===indexedLocation ? "blueMarker" : "redMarker";
-  
+
   return(
     <div className="marker-wrap" onClick={() => toggleInfoOpen(indexedLocation)}>
       <div className={"marker "+ markerClass} id={"marker"+index}></div>
