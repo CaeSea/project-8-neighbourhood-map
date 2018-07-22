@@ -73,7 +73,7 @@ class Main extends Component {
             <GoogleMapReact
               bootstrapURLKeys={{ key: 'AIzaSyB75r35CSSKNhFtuJnU-W0DV7X1hee6AIU' }}
               defaultCenter={{lat: 51.801881, lng: -4.971565}}
-              defaultZoom={ 10 }
+              defaultZoom={ 8 }
             >
             {showingSites.map((location, i) => (
                 <Marker

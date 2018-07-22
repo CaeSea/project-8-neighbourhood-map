@@ -17,8 +17,8 @@ class App extends Component {
       this.setState({
         locationId: currentLocationId
       })
-      if(list.hasAttribute('style')) {
-        list.style.width = 0;
+      if(list.classList.contains('openMobMenu')) {
+        list.classList.remove('openMobMenu')
       }
     } else {
       this.setState({
