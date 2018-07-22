@@ -8,7 +8,8 @@ import sortBy from 'sort-by'
 class Main extends Component {
 
   state = {
-    query: ''
+    query: '',
+    open: false
   }
 
   updateQuery = (query) => {
@@ -27,11 +28,27 @@ class Main extends Component {
     listView.classList.add('closeMobMenu');
   }
 
+  handleKeyPress = (event) => {
+    if (event.key !== 'Enter') return;
+
+    if(!this.state.open) {
+      this.openNav();
+      this.setState({
+        open: true
+      })
+    } else {
+      this.closeNav();
+      this.setState({
+        open: false
+      })
+    }
+  }
+
   render() {
 
     const { locations, toggleInfoOpen, locationId } = this.props;
     const { query } = this.state;
-    const { updateQuery, openNav, closeNav } = this;
+    const { updateQuery, openNav, closeNav, handleKeyPress     } = this;
 
     let showingSites;
     if(query) {
@@ -48,7 +65,7 @@ class Main extends Component {
       <div className="main-wrapper">
         <section className="listview">
           <div className="listview-content">
-            <span className="closebtn" onClick={() => closeNav()}>&times;</span>
+            <span className="closebtn" onClick={closeNav} onKeyPress={handleKeyPress} tabIndex="2">&times;</span>
             <h1>Camping Sites in West Wales</h1>
             <div className="search-wrapper">
               <input type="search" placeholder="Search..." value={query} onChange={(event) => updateQuery(event.target.value) }/>
@@ -69,7 +86,7 @@ class Main extends Component {
         </section>
         <section className="map-container">
           <div className="map-content"> {/*Error handling for if the map does not render as expected is handled by the google-map-react package*/}
-            <span className="openbtn" onClick={() => openNav()}>MENU</span>
+            <span className="openbtn" onClick={openNav} onKeyPress={handleKeyPress} tabIndex = "1">MENU</span>
             <GoogleMapReact
               bootstrapURLKeys={{ key: 'AIzaSyB75r35CSSKNhFtuJnU-W0DV7X1hee6AIU' }}
               defaultCenter={{lat: 51.801881, lng: -4.971565}}

@@ -90,8 +90,14 @@ class App extends Component {
     });
   }
 
+  noFocusElements = () => {
+    const iFrames = document.getElementsByTagName('iframe');
+    iFrames.tabIndex = -1;
+  }
+
   componentDidMount() {
     this.getSites();
+    this.noFocusElements();
   }
 
   render() {

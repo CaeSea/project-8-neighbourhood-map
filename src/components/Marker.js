@@ -9,7 +9,7 @@ function Marker(props) {
 
   return(
     <div className="marker-wrap" onClick={() => toggleInfoOpen(indexedLocation)}>
-      <div className={"marker "+ markerClass} id={"marker"+index}></div>
+      <div className={"marker "+ markerClass} id={"marker"+index} tabIndex="0"  ></div>
       {locationId === indexedLocation &&
         <InfoWindow
           toggleInfoOpen={ toggleInfoOpen }
