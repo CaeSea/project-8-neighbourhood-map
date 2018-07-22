@@ -49,6 +49,9 @@ class Main extends Component {
                 </li>
               ))}
             </ul>
+            <aside className="foursquare-attr">
+              <img src="https://developer.foursquare.com/docs/images/attribution.svg" alt="FourSquare Logo"/>
+            </aside>
           </div>
         </section>
         <section className="map-container">

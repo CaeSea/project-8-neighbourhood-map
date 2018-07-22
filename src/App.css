@@ -4,6 +4,7 @@ body {
 
 .App {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .main-wrapper {
@@ -53,6 +54,21 @@ ul.list-locations {
 
 .listview-location-name:hover {
   color: #ff3333;
+}
+
+.foursquare-attr {
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
+  justify-content: center;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 0.8em;
+}
+
+.foursquare-attr img {
+  color: white;
+  width: 60%;
 }
 
 /*---- Search Bar ---*/
@@ -170,6 +186,8 @@ ul.list-locations {
   background-size: 100% 100%;
   margin-bottom: 5px;
 }
+
+/*--- Error message if API does not load ---*/
 
 .error {
   width: 100%;
