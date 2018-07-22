@@ -21,16 +21,29 @@ body {
   width: 25%;
   background-color: #484848;
   margin: 0;
+  height: 100vh;
+}
+
+.listview .closebtn {
+  display: none;
+  width: 20%;
+  justify-content: flex-end;
+  justify-self: end;
+  font-size: 3em;
+  padding: 5px;
+  margin: 0 10px 0 auto;
+  color: white;
+  cursor: pointer;
 }
 
 .listview-content {
   width: 100%;
-  height: 100vh;
 }
 
 .listview-content h1 {
   color: white;
   text-align: center;
+  margin-top: 10px;
 }
 
 ul.list-locations {
@@ -58,17 +71,17 @@ ul.list-locations {
 
 .foursquare-attr {
   display: flex;
-  flex-wrap: wrap;
   color: white;
   justify-content: center;
   text-align: center;
   font-family: Arial, sans-serif;
   font-size: 0.8em;
+  overflow: hidden;
 }
 
 .foursquare-attr img {
   color: white;
-  width: 60%;
+  width: 70%;
 }
 
 /*---- Search Bar ---*/
@@ -98,6 +111,27 @@ ul.list-locations {
 .map-content {
   width: 100%;
   height: 100%;
+}
+
+.openbtn {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 15px;
+  z-index: 1;
+  background-color: #484848;
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.openMobMenu {
+  width: 25% !important;
+}
+
+.closeMobMenu {
+  width: 25% !important;
 }
 
 .marker {
@@ -194,4 +228,62 @@ ul.list-locations {
   color: red;
   font-size: 1.5em;
   padding: 5px;
+}
+
+/*--- Media Queries --*/
+
+@media screen and (max-width: 949px) {
+
+  .listview h1 {
+    font-size: 1.2em;
+    margin-top: 10px;
+  }
+
+  .listview {
+    font-size: 0.9em;
+  }
+
+}
+
+@media screen and (max-width: 699px) {
+
+  .App {
+    transition: margin-left .5s;
+  }
+
+  .listview {
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    font-size: 0.9em;
+  }
+
+  .openbtn {
+    cursor: pointer;
+    display: flex;
+    width: 15%;
+    justify-content: center;
+  }
+
+  .listview .closebtn {
+    display: flex;
+  }
+
+  .map-container {
+    width: 100%;
+  }
+
+  .openMobMenu {
+    width: 250px !important;
+  }
+
+  .closeMobMenu {
+    width: 0px !important;
+  }
+
+
 }

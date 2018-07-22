@@ -15,11 +15,23 @@ class Main extends Component {
     this.setState({ query: query.trim() })
   }
 
+  openNav = () => {
+    const listView = document.querySelector(".listview");
+    listView.classList.remove('closeMobMenu')
+    listView.classList.add('openMobMenu');
+  }
+
+  closeNav = () => {
+    const listView = document.querySelector(".listview");
+    listView.classList.remove('openMobMenu')
+    listView.classList.add('closeMobMenu');
+  }
+
   render() {
 
     const { locations, toggleInfoOpen, locationId } = this.props;
     const { query } = this.state;
-    const { updateQuery } = this;
+    const { updateQuery, openNav, closeNav } = this;
 
     let showingSites;
     if(query) {
@@ -36,6 +48,7 @@ class Main extends Component {
       <div className="main-wrapper">
         <section className="listview">
           <div className="listview-content">
+            <span className="closebtn" onClick={() => closeNav()}>&times;</span>
             <h1>Camping Sites in West Wales</h1>
             <div className="search-wrapper">
               <input type="search" placeholder="Search..." value={query} onChange={(event) => updateQuery(event.target.value) }/>
@@ -56,10 +69,11 @@ class Main extends Component {
         </section>
         <section className="map-container">
           <div className="map-content"> {/*Error handling for if the map does not render as expected is handled by the google-map-react package*/}
+            <span className="openbtn" onClick={() => openNav()}>MENU</span>
             <GoogleMapReact
               bootstrapURLKeys={{ key: 'AIzaSyB75r35CSSKNhFtuJnU-W0DV7X1hee6AIU' }}
               defaultCenter={{lat: 51.801881, lng: -4.971565}}
-              defaultZoom={10}
+              defaultZoom={ 10 }
             >
             {showingSites.map((location, i) => (
                 <Marker

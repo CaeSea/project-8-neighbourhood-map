@@ -12,10 +12,14 @@ class App extends Component {
 
   toggleInfoOpen = (locationId) => {
     let currentLocationId = locationId;
+    let list = document.querySelector(".listview");
     if(this.state.locationId === '' || this.state.locationId !== currentLocationId) {
       this.setState({
         locationId: currentLocationId
       })
+      if(list.hasAttribute('style')) {
+        list.style.width = 0;
+      }
     } else {
       this.setState({
         locationId: ''
