@@ -7,15 +7,19 @@ class App extends Component {
   state = {
     locations: [],
     locationId:'',
-    errorLoadingAPI: false
+    errorLoadingAPI: false,
+    center: {lat: 51.801881, lng: -4.971565},
+    zoom: 10
   }
 
-  toggleInfoOpen = (locationId) => {
+  toggleInfoOpen = (locationId, latLng) => {
     let currentLocationId = locationId;
     let list = document.querySelector(".listview");
     if(this.state.locationId === '' || this.state.locationId !== currentLocationId) {
       this.setState({
-        locationId: currentLocationId
+        locationId: currentLocationId,
+        center: latLng,
+        zoom: 12
       })
       if(list.classList.contains('openMobMenu')) {
         list.classList.remove('openMobMenu')
@@ -23,14 +27,16 @@ class App extends Component {
       }
     } else {
       this.setState({
-        locationId: ''
+        locationId: '',
+        zoom: 10,
+        center: {lat: 51.801881, lng: -4.971565}
       })
     }
   }
 
-  handleKeyPressInfoWindow = (locationId, event) => {
+  handleKeyPressInfoWindow = (locationId, latLng, event) => {
     if (event.key !== 'Enter') return;
-    this.toggleInfoOpen(locationId);
+    this.toggleInfoOpen(locationId, latLng);
   }
 
   getSites = () => {
@@ -57,6 +63,7 @@ class App extends Component {
         locations: response.response.groups[0].items
       });
       //this.assignPhotos();
+      console.log(this.state.locations)
     }).catch(error => {
       console.log('There was an error fetching the location information', error)
       //Let the user know there was an error fetching results and to try again.
@@ -107,7 +114,7 @@ class App extends Component {
   }
 
   render() {
-    const { locations, locationId, errorLoadingAPI} = this.state;
+    const { locations, locationId, errorLoadingAPI, zoom, center} = this.state;
     const { toggleInfoOpen, handleKeyPressInfoWindow } = this;
     return (
       <div className="App">
@@ -119,6 +126,8 @@ class App extends Component {
           toggleInfoOpen = { toggleInfoOpen }
           locationId = { locationId }
           handleKeyPressInfoWindow = { handleKeyPressInfoWindow }
+          zoom = { zoom }
+          center = { center }
         />
       </div>
     );

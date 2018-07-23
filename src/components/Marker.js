@@ -4,12 +4,13 @@ import PropTypes from 'prop-types'
 
 function Marker(props) {
 
-  const { toggleInfoOpen, handleKeyPressInfoWindow, locationId, name, indexedLocation, img, address, index } = props;
+  const { toggleInfoOpen, handleKeyPressInfoWindow, locationId, name, indexedLocation, img, address, index, lat, lng } = props;
   let markerClass = locationId===indexedLocation ? "blueMarker" : "redMarker";
+  let latLng = { lat: lat, lng: lng};
 
   return(
-    <div className="marker-wrap" onClick={() => toggleInfoOpen(indexedLocation)}>
-      <div className={"marker "+ markerClass} id={"marker"+index} tabIndex="0" onKeyPress={handleKeyPressInfoWindow.bind(this, indexedLocation)}></div>
+    <div className="marker-wrap" onClick={() => toggleInfoOpen(indexedLocation, latLng)}>
+      <div className={"marker "+ markerClass} id={"marker"+index} tabIndex="0" onKeyPress={handleKeyPressInfoWindow.bind(this, indexedLocation, latLng)}></div>
       {locationId === indexedLocation &&
         <InfoWindow
           toggleInfoOpen={ toggleInfoOpen }
