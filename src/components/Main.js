@@ -25,7 +25,7 @@ class Main extends Component {
 
   closeNav = () => {
     const listView = document.querySelector(".listview");
-    listView.style.visibility = "hidden"
+    listView.style.visibility = ""
     listView.classList.remove('openMobMenu')
     listView.classList.add('closeMobMenu');
   }
@@ -46,11 +46,20 @@ class Main extends Component {
     }
   }
 
+  toggleInfo = (locationId) => {
+    if(this.state.open) {
+      this.setState({
+        open: false
+      })
+    }
+    this.props.toggleInfoOpen(locationId)
+  }
+
   render() {
 
     const { locations, toggleInfoOpen, locationId, handleKeyPressInfoWindow } = this.props;
     const { query } = this.state;
-    const { updateQuery, openNav, closeNav, handleKeyPress     } = this;
+    const { updateQuery, openNav, closeNav, handleKeyPress, toggleInfo } = this;
 
     let showingSites;
     if(query) {
@@ -75,7 +84,7 @@ class Main extends Component {
             <ul className="list-locations">
               {showingSites.map((location, i) => (
                 <li key={location.venue.id}>
-                  <button className="listview-location-name" onClick={() => toggleInfoOpen(location.venue.id)}>
+                  <button className="listview-location-name" onClick={() => toggleInfo(location.venue.id)}>
                     {location.venue.name}
                   </button>
                 </li>

@@ -19,6 +19,7 @@ class App extends Component {
       })
       if(list.classList.contains('openMobMenu')) {
         list.classList.remove('openMobMenu')
+        list.style.visibility = "";
       }
     } else {
       this.setState({
@@ -29,7 +30,7 @@ class App extends Component {
 
   handleKeyPressInfoWindow = (locationId, event) => {
     if (event.key !== 'Enter') return;
-    this.toggleInfoOpen(locationId)
+    this.toggleInfoOpen(locationId);
   }
 
   getSites = () => {
