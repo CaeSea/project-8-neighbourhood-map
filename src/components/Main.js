@@ -19,11 +19,13 @@ class Main extends Component {
   openNav = () => {
     const listView = document.querySelector(".listview");
     listView.classList.remove('closeMobMenu')
+    listView.style.visibility = "visible"
     listView.classList.add('openMobMenu');
   }
 
   closeNav = () => {
     const listView = document.querySelector(".listview");
+    listView.style.visibility = "hidden"
     listView.classList.remove('openMobMenu')
     listView.classList.add('closeMobMenu');
   }

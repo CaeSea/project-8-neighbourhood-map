@@ -264,6 +264,7 @@ ul.list-locations {
   }
 
   .listview {
+    visibility: hidden;
     width: 0;
     position: fixed; /* Stay in place */
     z-index: 2; /* Stay on top */
