@@ -128,6 +128,7 @@ class Main extends Component {
   static propTypes = {
     locations: PropTypes.array.isRequired,
     toggleInfoOpen: PropTypes.func.isRequired,
+    handleKeyPressInfoWindow: PropTypes.func.isRequired,
     locationId: PropTypes.string.isRequired
   }
 

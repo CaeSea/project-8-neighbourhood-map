@@ -24,6 +24,7 @@ function Marker(props) {
 
 Marker.propTypes = {
   toggleInfoOpen: PropTypes.func.isRequired,
+  handleKeyPressInfoWindow: PropTypes.func.isRequired,
   locationId: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   indexedLocation: PropTypes.string.isRequired,
