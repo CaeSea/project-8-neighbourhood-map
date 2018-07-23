@@ -184,17 +184,17 @@ ul.list-locations {
 }
 
 .info-window:after {
-    content:'';
-    position: absolute;
-    top: 90%;
-    left: 50%;
-    margin-left: -50px;
-    width: 0;
-    height: 0;
-    border-top: solid 50px rgba(255,255,224);
-    border-left: solid 50px transparent;
-    border-right: solid 50px transparent;
-    z-index: -1000;
+  content:'';
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  margin-left: -50px;
+  width: 0;
+  height: 0;
+  border-top: solid 50px rgba(255,255,224);
+  border-left: solid 50px transparent;
+  border-right: solid 50px transparent;
+  z-index: -1000;
 }
 
 .info-window-content {

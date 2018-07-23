@@ -27,6 +27,11 @@ class App extends Component {
     }
   }
 
+  handleKeyPressInfoWindow = (locationId, event) => {
+    if (event.key !== 'Enter') return;
+    this.toggleInfoOpen(locationId)
+  }
+
   getSites = () => {
     const venuesEndpoint = 'https://api.foursquare.com/v2/venues/explore?';
 
@@ -102,7 +107,7 @@ class App extends Component {
 
   render() {
     const { locations, locationId, errorLoadingAPI} = this.state;
-    const { toggleInfoOpen } = this;
+    const { toggleInfoOpen, handleKeyPressInfoWindow } = this;
     return (
       <div className="App">
       {errorLoadingAPI &&
@@ -112,6 +117,7 @@ class App extends Component {
           locations = { locations }
           toggleInfoOpen = { toggleInfoOpen }
           locationId = { locationId }
+          handleKeyPressInfoWindow = { handleKeyPressInfoWindow }
         />
       </div>
     );

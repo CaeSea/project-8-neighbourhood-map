@@ -46,7 +46,7 @@ class Main extends Component {
 
   render() {
 
-    const { locations, toggleInfoOpen, locationId } = this.props;
+    const { locations, toggleInfoOpen, locationId, handleKeyPressInfoWindow } = this.props;
     const { query } = this.state;
     const { updateQuery, openNav, closeNav, handleKeyPress     } = this;
 
@@ -101,6 +101,7 @@ class Main extends Component {
                   img={ location.venue.photo }
                   address={ location.venue.location.formattedAddress.join(', ') }
                   toggleInfoOpen={toggleInfoOpen}
+                  handleKeyPressInfoWindow = { handleKeyPressInfoWindow }
                   locationId={ locationId }
                   indexedLocation = { location.venue.id }
                   index = { i }
