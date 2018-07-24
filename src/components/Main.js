@@ -14,7 +14,7 @@ class Main extends Component {
 
   static defaultProps = {
     defaultCenter: {lat: 51.801881, lng: -4.971565},
-    defaultZoom: 10
+    defaultZoom: 8
   }
 
   updateQuery = (query) => {

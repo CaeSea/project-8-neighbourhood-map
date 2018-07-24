@@ -39,6 +39,8 @@ body {
   margin: 0 10px 0 auto;
   color: white;
   cursor: pointer;
+  border: none;
+  background-color: inherit;
 }
 
 .listview-content {
@@ -137,6 +139,7 @@ ul.list-locations {
   color: white;
   font-weight: bold;
   text-decoration: underline;
+  border: none;
 }
 
 .openMobMenu {
@@ -211,12 +214,13 @@ ul.list-locations {
   padding: 0;
 }
 
-.info-window-content span {
+.info-window-content button {
   cursor: pointer;
   flex-basis: 5%;
   font-size: 2em;
-  padding: 1px;
-  height: 50px;
+  padding: 5px;
+  border: none;
+  background-color: inherit;
 }
 
 .info-window-content p {

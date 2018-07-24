@@ -9,17 +9,17 @@ class App extends Component {
     locationId:'',
     errorLoadingAPI: false,
     center: {lat: 51.801881, lng: -4.971565},
-    zoom: 10
+    zoom: 8
   }
 
-  toggleInfoOpen = (locationId, latLng) => {
+  toggleInfoOpen = (locationId, latLng, index) => {
     let currentLocationId = locationId;
     let list = document.querySelector(".listview");
     if(this.state.locationId === '' || this.state.locationId !== currentLocationId) {
       this.setState({
         locationId: currentLocationId,
         center: latLng,
-        zoom: 12
+        zoom: 11
       })
       if(list.classList.contains('openMobMenu')) {
         list.classList.remove('openMobMenu')
@@ -28,13 +28,14 @@ class App extends Component {
     } else {
       this.setState({
         locationId: '',
-        zoom: 10,
+        zoom: 8,
         center: {lat: 51.801881, lng: -4.971565}
       })
     }
+
   }
 
-  handleKeyPressInfoWindow = (locationId, latLng, event) => {
+  handleKeyPressInfoWindow = (locationId, latLng,  event) => {
     if (event.key !== 'Enter') return;
     this.toggleInfoOpen(locationId, latLng);
   }
@@ -63,7 +64,6 @@ class App extends Component {
         locations: response.response.groups[0].items
       });
       //this.assignPhotos();
-      console.log(this.state.locations)
     }).catch(error => {
       console.log('There was an error fetching the location information', error)
       //Let the user know there was an error fetching results and to try again.
