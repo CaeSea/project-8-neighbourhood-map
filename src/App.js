@@ -12,7 +12,7 @@ class App extends Component {
     zoom: 8
   }
 
-  toggleInfoOpen = (locationId, latLng, index) => {
+  toggleInfoOpen = (locationId, latLng) => {
     let currentLocationId = locationId;
     let list = document.querySelector(".listview");
     if(this.state.locationId === '' || this.state.locationId !== currentLocationId) {

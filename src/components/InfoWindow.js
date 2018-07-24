@@ -23,7 +23,7 @@ class InfoWindow extends Component {
       }
     }
     if(event.keyCode === 27) {
-      this.props.toggleInfoOpen('',{lat: 51.801881, lng: -4.971565});
+      this.props.toggleInfoOpen(this.props.locationId, {lat: 51.801881, lng: -4.971565});
     }
   }
 
