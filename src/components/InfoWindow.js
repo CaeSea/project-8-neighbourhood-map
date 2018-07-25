@@ -31,10 +31,10 @@ class InfoWindow extends Component {
     const { toggleInfoOpen, name, address } = this.props;
 
     return(
-      <div className="info-window" onClick={() => toggleInfoOpen('',{lat: 51.801881, lng: -4.971565})}>
+      <div className="info-window">
         <div className="info-window-content">
           <h1>{ name }</h1>
-          <button ref={(close) => { this.closeBtn = close; }} className="close-infowindow">&times;</button>
+          <button aria-label="Close" ref={(close) => { this.closeBtn = close; }} className="close-infowindow" onClick={() => toggleInfoOpen('',{lat: 51.801881, lng: -4.971565})}>&times;</button>
           <div className="location-img" style={{ backgroundImage: `url("${this.props.img?this.props.img : `http://via.placeholder.com/128x193?text=No%20Image`}")`}}></div>
           <p><strong>Address:</strong> { address === 'United Kingdom' ? 'No Address Available' :  address }</p>
         </div>

@@ -25,9 +25,11 @@ class Main extends Component {
 
   openNav = () => {
     const listView = document.querySelector(".listview");
-    listView.classList.remove('closeMobMenu')
-    listView.style.visibility = "visible"
+
+    listView.classList.remove('closeMobMenu');
+    listView.style.visibility = "visible";
     listView.classList.add('openMobMenu');
+    //document.addEventListener('keydown', this.trapTabMobMenu)
   }
 
   closeNav = () => {
@@ -36,6 +38,32 @@ class Main extends Component {
     listView.classList.remove('openMobMenu')
     listView.classList.add('closeMobMenu');
   }
+
+  /*
+  trapTabMobMenu = (event) => { // This locks focus into a infoWindow when opened.
+
+    if(event.keyCode === 9) { // if the tab key is pressed in the mobile menu
+      const closeBtn = this.closeBtn;
+      let activeElement = document.activeElement;
+
+      if(event.shiftKey) { // shift-tab
+        event.preventDefault();
+        //if focused element does not have class in-list-view
+        if(!activeElement.classList.contains("in-listview")) {
+          closeBtn.focus();
+        }
+      } else { // normal tab
+        event.preventDefault();
+        if(!activeElement.classList.contains("in-listview")) {
+          closeBtn.focus();
+        }
+      }
+    }
+    if(event.keyCode === 27) {
+      this.closeNav();
+    }
+  }
+  */
 
   handleKeyPress = (event) => {
     if (event.key !== 'Enter') return;
@@ -83,15 +111,15 @@ class Main extends Component {
       <div className="main-wrapper">
         <section className="listview">
           <div className="listview-content">
-            <button className="closebtn" onClick={closeNav} onKeyPress={handleKeyPress} tabIndex="2">&times;</button>
+            <button aria-label="Close" ref={(close) => { this.closeBtn = close; }} className="closebtn in-listview" onClick={closeNav} onKeyPress={handleKeyPress} tabIndex="2">&times;</button>
             <h1>Camping Sites in West Wales</h1>
             <div className="search-wrapper">
-              <input type="search" placeholder="Search..." value={query} onChange={(event) => updateQuery(event.target.value) }/>
+              <input aria-label="Search" className="in-listview" type="search" placeholder="Search..." value={query} onChange={(event) => updateQuery(event.target.value) }/>
             </div>
             <ul className="list-locations">
               {showingSites.map((location, i) => (
                 <li key={location.venue.id}>
-                  <button className="listview-location-name" onClick={() => toggleInfo(location.venue.id, {lat: location.venue.location.lat, lng: location.venue.location.lng})}>
+                  <button aria-label={location.venue.name} className="listview-location-name in-listview" onClick={() => toggleInfo(location.venue.id, {lat: location.venue.location.lat, lng: location.venue.location.lng})}>
                     {location.venue.name}
                   </button>
                 </li>
@@ -103,8 +131,8 @@ class Main extends Component {
           </div>
         </section>
         <section className="map-container">
-          <div className="map-content"> {/*Error handling for if the map does not render as expected is handled by the google-map-react package*/}
-            <button className="openbtn" onClick={openNav} onKeyPress={handleKeyPress} tabIndex = "1">MENU</button>
+          <div aria-label="map" role="application" className="map-content"> {/*Error handling for if the map does not render as expected is handled by the google-map-react package*/}
+            <button aria-label="Menu" className="openbtn" onClick={openNav} onKeyPress={handleKeyPress} tabIndex = "1">MENU</button>
             <GoogleMapReact
               bootstrapURLKeys={{ key: 'AIzaSyB75r35CSSKNhFtuJnU-W0DV7X1hee6AIU' }}
               defaultCenter={ this.props.defaultCenter }

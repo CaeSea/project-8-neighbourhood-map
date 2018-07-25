@@ -9,8 +9,8 @@ function Marker(props) {
   let latLng = { lat: lat, lng: lng};
 
   return(
-    <div className="marker-wrap" onClick={() => toggleInfoOpen(indexedLocation, latLng)}>
-      <div className={"marker "+ markerClass} id={"marker"+index} tabIndex="0" onKeyPress={handleKeyPressInfoWindow.bind(this, indexedLocation, latLng)}></div>
+    <div label={name + " map marker"} role="button" className="marker-wrap" onClick={() => toggleInfoOpen(indexedLocation, latLng)} onKeyPress={handleKeyPressInfoWindow.bind(this, indexedLocation, latLng)}>
+      <div className={"marker "+ markerClass} id={"marker"+index} tabIndex="0"></div>
       {locationId === indexedLocation &&
         <InfoWindow
           toggleInfoOpen={ toggleInfoOpen }
