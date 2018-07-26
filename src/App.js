@@ -7,7 +7,6 @@ class App extends Component {
   state = {
     locations: [],
     locationId:'',
-    errorLoadingAPI: false,
     center: {lat: 51.801881, lng: -4.971565},
     zoom: 8
   }
@@ -118,9 +117,6 @@ class App extends Component {
     const { toggleInfoOpen, handleKeyPressInfoWindow } = this;
     return (
       <div className="App">
-      {errorLoadingAPI &&
-        <strong className="error">Warning! There was an error retrieving the data needed to run the app, please refresh the page.</strong>
-      }
         <Main
           locations = { locations }
           toggleInfoOpen = { toggleInfoOpen }
