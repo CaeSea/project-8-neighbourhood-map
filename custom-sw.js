@@ -2,8 +2,7 @@ let staticCacheName = 'neighborhood-map-static-v1';
 
 self.addEventListener('install', function(event) {
   const pathsToCache = [
-  '/',
-  '/index.html'
+  './public/index.html'
 ];
   event.waitUntil(
     caches.open(staticCacheName).then(function(cache) {
