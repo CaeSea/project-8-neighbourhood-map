@@ -238,6 +238,12 @@ ul.list-locations {
   margin-bottom: 5px;
 }
 
+#fail {
+  display: none;
+  color: red;
+  font-size: 2em;
+}
+
 /*--- Error message if API does not load ---*/
 
 .error {

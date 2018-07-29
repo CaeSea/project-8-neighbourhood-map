@@ -9,7 +9,8 @@ class App extends Component {
     locations: [],
     locationId:'',
     center: {lat: 51.801881, lng: -4.971565},
-    zoom: 8
+    zoom: 8,
+    photoApiFail : false
   }
 
   //Opens info window for the clicked marker or list view button by comparing the state id to the id of the clicked location.
@@ -71,11 +72,12 @@ class App extends Component {
         this.setState({
           locations: locationsCopy
         })
-        //location.photo = response.response.photos.items[0].prefix + '300x500' + response.response.photos.items[0].suffix;
       }
     }).catch(error => {
       console.log('There was an error fetching the location photos', error)
-      //Let the user know there was an error fetching results and to try again.
+      this.setState({
+        photoApiFail: true
+      })
     });
   }
 
@@ -100,12 +102,12 @@ class App extends Component {
 
   //Assigns each locations photos and calls the noFocusElements() function after component has mounted.
   componentDidMount() {
-    this.assignPhotos();
+    //this.assignPhotos();
     this.noFocusElements();
   }
 
   render() {
-    const { locations, locationId, zoom, center} = this.state;
+    const { locations, locationId, zoom, center, photoApiFail } = this.state;
     const { toggleInfoOpen, handleKeyPressInfoWindow } = this;
     return (
       <div className="App">
@@ -116,6 +118,7 @@ class App extends Component {
           handleKeyPressInfoWindow = { handleKeyPressInfoWindow }
           zoom = { zoom }
           center = { center }
+          photoApiFail = { photoApiFail }
         />
       </div>
     );

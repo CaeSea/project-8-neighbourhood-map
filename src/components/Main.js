@@ -74,7 +74,7 @@ class Main extends Component { //Main component that holds listview and map info
 
   render() {
 
-    const { locations, toggleInfoOpen, locationId, handleKeyPressInfoWindow } = this.props;
+    const { locations, toggleInfoOpen, locationId, handleKeyPressInfoWindow, photoApiFail } = this.props;
     const { query } = this.state;
     const { updateQuery, openNav, closeNav, handleKeyPress, toggleInfo } = this;
 
@@ -113,6 +113,7 @@ class Main extends Component { //Main component that holds listview and map info
           </div>
         </section>
         <section className="map-container">
+
           <div aria-label="map" role="application" className="map-content"> {/*Error handling for if the map does not render as expected is handled by the google-map-react package*/}
             <button aria-label="Menu" className="openbtn" onClick={openNav} onKeyPress={handleKeyPress} tabIndex = "1">MENU</button>
             <GoogleMapReact
@@ -135,6 +136,7 @@ class Main extends Component { //Main component that holds listview and map info
                   locationId={ locationId }
                   indexedLocation = { location.id }
                   index = { i }
+                  photoApiFail = { photoApiFail }
                 />
               ))}
             </GoogleMapReact>

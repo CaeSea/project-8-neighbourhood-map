@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 function Marker(props) {
 
-  const { toggleInfoOpen, handleKeyPressInfoWindow, locationId, name, indexedLocation, img, address, index, lat, lng } = props;
+  const { toggleInfoOpen, handleKeyPressInfoWindow, locationId, name, indexedLocation, img, address, index, lat, lng, photoApiFail } = props;
   let markerClass = locationId===indexedLocation ? "blueMarker" : "redMarker";
   let latLng = { lat: lat, lng: lng};
 
@@ -17,7 +17,8 @@ function Marker(props) {
           name={ name }
           img= { img }
           address = { address }
-          locationId= { locationId }>
+          locationId= { locationId }
+          photoApiFail = { photoApiFail }>
         </InfoWindow>
       }
     </div>

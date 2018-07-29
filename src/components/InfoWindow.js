@@ -6,9 +6,19 @@ class InfoWindow extends Component {
   //Puts keyboard focus onto the close button as soon the component is mounted (infowindow is opened)
   //Also adds an event listener to the infoWindow to trap the tab key, allows better UX for keyboards.
   componentDidMount() {
+    this.checkPhotoApiFail();
     this.closeBtn.focus();
     const infoWindow = document.querySelector(".info-window");
     infoWindow.addEventListener('keydown', this.trapTabKey)
+  }
+
+  checkPhotoApiFail = () => {
+    if(this.props.photoApiFail) {
+      const fail = document.getElementById("fail");
+      const locationImageHolder = document.getElementById("location-image-holder");
+      fail.style.display = "block";
+      locationImageHolder.style.backgroundImage = "none";
+    }
   }
 
   // Traps the keyboard focus within an info window when it is opened.
@@ -44,7 +54,7 @@ class InfoWindow extends Component {
         <div className="info-window-content">
         <button aria-label="Close" ref={(close) => { this.closeBtn = close; }} className="close-infowindow focusable" onClick={() => toggleInfoOpen('',{lat: 51.801881, lng: -4.971565})}>&times;</button>
           <h1 className="focusable" tabIndex="0">{ name }</h1>
-          <div className="location-img" style={{ backgroundImage: `url("${this.props.img?this.props.img : `http://via.placeholder.com/128x193?text=No%20Image`}")`}}></div>
+          <div className="location-img" id="location-image-holder" style={{ backgroundImage: `url("${this.props.img !== ""?this.props.img : `http://via.placeholder.com/128x193?text=No%20Image`}")`}}><p id="fail">Error retrieving location photo!</p></div>
           <p className="focusable" tabIndex="0"><strong>Address:</strong> { address === 'United Kingdom' ? 'No Address Available' :  address }</p>
         </div>
       </div>
