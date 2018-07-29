@@ -251,7 +251,6 @@ ul.list-locations {
   top: 0;
   left: 40%;
   width: 100%;
-  /*z-index: -1;*/
   font-weight: bold;
   text-decoration: underline;
   content: "Error loading map. Please try again."
