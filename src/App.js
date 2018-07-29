@@ -52,8 +52,8 @@ class App extends Component {
 
   // Makes a call to FourSquare API for photos of each location, then updates the state adding the photo as a property to each location in the locations array.
   getPhotos = (venueId, location, index) => {
-    const client_id = 'MWSJXGIA1V1ULP2K3XHO5FS5IMAFEKEJO0KDNCXDYTZ2EA4R';
-    const client_secret = 'CXMGMBT4QEZAWFAJOPA5S4VUKJIZG0GBY3KE5DH3M2HHQBSF';
+    const client_id = 'DWSI0123HAIFSCFUPYFKHDLNY5Y5UEJ1J2NT1K0T3EHWIKOZ';
+    const client_secret = 'YBTT2EYN55YR2XHUPPUI1YSH5IF4YV5UR5XQSDHNQ3UST2GB';
     const version = '20130619'
     const venuesEndpoint = `https://api.foursquare.com/v2/venues/${venueId}/photos?limit=1&client_id=${client_id}&client_secret=${client_secret}&v=${version}`;
 
@@ -100,7 +100,7 @@ class App extends Component {
 
   //Assigns each locations photos and calls the noFocusElements() function after component has mounted.
   componentDidMount() {
-    //this.assignPhotos();
+    this.assignPhotos();
     this.noFocusElements();
   }
 
