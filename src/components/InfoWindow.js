@@ -3,12 +3,15 @@ import PropTypes from 'prop-types'
 
 class InfoWindow extends Component {
 
+  //Puts keyboard focus onto the close button as soon the component is mounted (infowindow is opened)
+  //Also adds an event listener to the infoWindow to trap the tab key, allows better UX for keyboards.
   componentDidMount() {
     this.closeBtn.focus();
     const infoWindow = document.querySelector(".info-window");
     infoWindow.addEventListener('keydown', this.trapTabKey)
   }
 
+  // Traps the keyboard focus within an info window when it is opened.
   trapTabKey = (event) => { // This locks focus into a infoWindow when opened.
 
     const closeBtn = this.closeBtn;

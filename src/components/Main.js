@@ -5,24 +5,29 @@ import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 
-class Main extends Component {
+class Main extends Component { //Main component that holds listview and map info.
+
+  //both listview and map share this component so that they can both easily access the state.
 
   state = {
     query: '',
     open: false
   }
 
+  // Default starting point for the map.
   static defaultProps = {
     defaultCenter: {lat: 51.801881, lng: -4.971565},
     defaultZoom: 8
   }
 
+  //Updates the state.query to what the user types in.
   updateQuery = (query) => {
     this.setState({
       query: query.trim()
      })
   }
 
+  //Handles the opening of the mobile menu.
   openNav = () => {
     const listView = document.querySelector(".listview");
 
@@ -32,6 +37,7 @@ class Main extends Component {
     //document.addEventListener('keydown', this.trapTabMobMenu)
   }
 
+  //Handles the closing of the mobile menu.
   closeNav = () => {
     const listView = document.querySelector(".listview");
     listView.style.visibility = ""
@@ -39,32 +45,7 @@ class Main extends Component {
     listView.classList.add('closeMobMenu');
   }
 
-  /*
-  trapTabMobMenu = (event) => { // This locks focus into a infoWindow when opened.
-
-    if(event.keyCode === 9) { // if the tab key is pressed in the mobile menu
-      const closeBtn = this.closeBtn;
-      let activeElement = document.activeElement;
-
-      if(event.shiftKey) { // shift-tab
-        event.preventDefault();
-        //if focused element does not have class in-list-view
-        if(!activeElement.classList.contains("in-listview")) {
-          closeBtn.focus();
-        }
-      } else { // normal tab
-        event.preventDefault();
-        if(!activeElement.classList.contains("in-listview")) {
-          closeBtn.focus();
-        }
-      }
-    }
-    if(event.keyCode === 27) {
-      this.closeNav();
-    }
-  }
-  */
-
+  //Allows for keyboard users to open and close the mobile menu if needed.
   handleKeyPress = (event) => {
     if (event.key !== 'Enter') return;
 
@@ -81,6 +62,7 @@ class Main extends Component {
     }
   }
 
+  //Allows info window to open by calling toggleInfoOpen() from props.
   toggleInfo = (locationId, latLng) => {
     if(this.state.open) {
       this.setState({
