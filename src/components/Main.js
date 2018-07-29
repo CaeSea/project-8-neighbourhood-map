@@ -113,10 +113,9 @@ class Main extends Component { //Main component that holds listview and map info
           </div>
         </section>
         <section className="map-container">
-
+          <p id="map-error">There was an error loading google maps. Please try again.</p>
           <div aria-label="map" role="application" className="map-content"> {/*Error handling for if the map does not render as expected is handled by the google-map-react package*/}
             <button aria-label="Menu" className="openbtn" onClick={openNav} onKeyPress={handleKeyPress} tabIndex = "1">MENU</button>
-            <p id="map-error">There was an error loading google maps. Please try again.</p>
             <GoogleMapReact
               bootstrapURLKeys={{ key: 'AIzaSyB75r35CSSKNhFtuJnU-W0DV7X1hee6AIU' }}
               defaultCenter={ this.props.defaultCenter }
