@@ -244,6 +244,18 @@ ul.list-locations {
   font-size: 2em;
 }
 
+#map-error {
+  color: red;
+  font-size: 1em;
+  position: absolute;
+  top: 0;
+  left: 40%;
+  width: 100%;
+  z-index: -1;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 /*--- Error message if API does not load ---*/
 
 .error {
@@ -265,6 +277,7 @@ ul.list-locations {
   .listview {
     font-size: 0.9em;
   }
+
 
 }
 
@@ -321,6 +334,11 @@ ul.list-locations {
 
   .info-window:after {
     display: none;
+  }
+
+  #map-error {
+    top: 35px;
+    left: 10%;
   }
 }
 
