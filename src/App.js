@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Main from './components/Main.js'
+import locations from './locations.json'
 
 class App extends Component {
 
@@ -40,38 +41,13 @@ class App extends Component {
   }
 
   getSites = () => {
-    const venuesEndpoint = 'https://api.foursquare.com/v2/venues/explore?';
-
-    const params = {
-      client_id: 'MWSJXGIA1V1ULP2K3XHO5FS5IMAFEKEJO0KDNCXDYTZ2EA4R', //Client ID obtained by getting developer access
-      client_secret:'CXMGMBT4QEZAWFAJOPA5S4VUKJIZG0GBY3KE5DH3M2HHQBSF', //Client Secret obtained by getting developer access
-      limit: 10, //The max number of venues to load
-      query: 'camping', //The type of venues we want to query
-      v: '20130619', //The version of the API.
-      ll: '51.801881,-4.971565' //The latitude and longitude of Haverfordwest, West Wales
-    };
-
-    fetch(venuesEndpoint + new URLSearchParams(params), {
-      method: 'GET'
-    }).then((response) => {
-      if(response.ok) { //Checks that the response was recieved correctly from the FourSquare API.
-        return response.json();
-      }
-      throw response;
-    }).then((response) => {
-      this.setState({ //Set the components state with the locations.
-        locations: response.response.groups[0].items
-      });
-      //this.assignPhotos();
-    }).catch(error => {
-      console.log('There was an error fetching the location information', error)
-      //Let the user know there was an error fetching results and to try again.
-      this.setState({errorLoadingAPI: true}) // Set the state to try and force reload. If not then set the state to show the error message to user on the page.
-    });
+    //parse locations from local json file and set into state.locations array.
+    this.setState({
+      locations: locations.sites
+    })
   }
 
   getPhotos = (venueId, location) => {
-
     const client_id = 'MWSJXGIA1V1ULP2K3XHO5FS5IMAFEKEJO0KDNCXDYTZ2EA4R';
     const client_secret = 'CXMGMBT4QEZAWFAJOPA5S4VUKJIZG0GBY3KE5DH3M2HHQBSF';
     const version = '20130619'
@@ -86,7 +62,7 @@ class App extends Component {
       throw response;
     }).then((response) => {
       if(response.response.photos.count > 0) { //IF THE LOCATION HAS A PHOTO!!
-        location.venue.photo = response.response.photos.items[0].prefix + '300x500' + response.response.photos.items[0].suffix;
+        location.photo = response.response.photos.items[0].prefix + '300x500' + response.response.photos.items[0].suffix;
       }
     }).catch(error => {
       console.log('There was an error fetching the location photos', error)
@@ -97,7 +73,7 @@ class App extends Component {
 
   assignPhotos = () => {
     this.state.locations.forEach((location) => {
-      let id = location.venue.id;
+      let id = location.id;
       this.getPhotos(id, location);
     });
   }
@@ -112,8 +88,12 @@ class App extends Component {
     this.noFocusElements();
   }
 
+  componentDidUpdate() {
+    //this.assignPhotos();
+  }
+
   render() {
-    const { locations, locationId, errorLoadingAPI, zoom, center} = this.state;
+    const { locations, locationId, zoom, center} = this.state;
     const { toggleInfoOpen, handleKeyPressInfoWindow } = this;
     return (
       <div className="App">

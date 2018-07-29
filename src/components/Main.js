@@ -99,12 +99,12 @@ class Main extends Component {
     let showingSites;
     if(query) {
       const match = new RegExp(escapeRegExp(query), 'i')
-      showingSites = locations.filter((location) => match.test(location.venue.name))
+      showingSites = locations.filter((location) => match.test(location.name))
     } else {
       showingSites = locations;
     }
 
-    showingSites.sort(sortBy('venue.name'))
+    showingSites.sort(sortBy('name'))
 
     return (
       // All content here relies on this state to filter locations.
@@ -118,9 +118,9 @@ class Main extends Component {
             </div>
             <ul className="list-locations">
               {showingSites.map((location, i) => (
-                <li key={location.venue.id}>
-                  <button aria-label={location.venue.name} className="listview-location-name in-listview" onClick={() => toggleInfo(location.venue.id, {lat: location.venue.location.lat, lng: location.venue.location.lng})}>
-                    {location.venue.name}
+                <li key={location.id}>
+                  <button aria-label={location.name} className="listview-location-name in-listview" onClick={() => toggleInfo(location.id, {lat: location.location.lat, lng: location.location.lng})}>
+                    {location.name}
                   </button>
                 </li>
               ))}
@@ -142,16 +142,16 @@ class Main extends Component {
             >
             {showingSites.map((location, i) => (
                 <Marker
-                  key={ location.venue.id }
-                  lat={ location.venue.location.lat}
-                  lng={ location.venue.location.lng }
-                  name={ location.venue.name }
-                  img={ location.venue.photo }
-                  address={ location.venue.location.formattedAddress.join(', ') }
+                  key={ location.id }
+                  lat={ location.location.lat}
+                  lng={ location.location.lng }
+                  name={ location.name }
+                  img={ location.photo }
+                  address={ location.location.formattedAddress.join(', ') }
                   toggleInfoOpen={toggleInfoOpen}
                   handleKeyPressInfoWindow = { handleKeyPressInfoWindow }
                   locationId={ locationId }
-                  indexedLocation = { location.venue.id }
+                  indexedLocation = { location.id }
                   index = { i }
                 />
               ))}

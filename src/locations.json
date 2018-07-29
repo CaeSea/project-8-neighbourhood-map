@@ -1,0 +1,104 @@
+{
+  "sites": [
+    {
+      "id": "5b37a83f535d6f002c827dee",
+      "name": "Carn Springs Camping",
+      "photo": "",
+      "location": {
+        "lat": 51.692726,
+        "lng": -4.7510633,
+        "formattedAddress": ["Devonshire Drive", "Tenby", "Pembrokeshire", "SA70 8RD", "United Kingdom"]
+        }
+      },
+      {
+        "id": "527d2afe498e68cdabe0597a",
+        "name": "Celtic Camping",
+        "photo": "",
+        "location": {
+          "lat": 51.926046,
+          "lng": -5.220227,
+          "formattedAddress": ["St. Davids", "Haverfordwest", "SA62 6DG", "United Kingdom"]
+        }
+      },
+      {
+        "id": "579637a4498e1dae1b0f31d2",
+        "name": "Cwtch Camping",
+        "photo": "",
+        "location": {
+          "lat": 51.729612,
+          "lng": -4.951009,
+          "formattedAddress": ["Milford Haven", "Pembrokeshire", "S A73", "United Kingdom"]
+        }
+      },
+    {
+      "id": "51f22990498e3d912a0633db",
+      "name": "Hendre Eynon Camping",
+      "photo": "",
+      "location": {
+        "lat": 51.90489,
+        "lng": -5.241313,
+        "formattedAddress": ["Hendre Eynon", "St, Davids", "SA62 6DB", "United Kingdom"]
+      }
+    },
+    {
+      "id": "4c07a79d42d4b713b8b4f445",
+      "name": "Newgale Beach",
+      "photo": "",
+      "location": {
+        "lat": 51.853931320416784,
+        "lng": -5.1234410677656665,
+        "formattedAddress": ["Newgale", "Haverfordwest", "Pembrokeshire", "United Kingdom"]
+      }
+    },
+    {
+      "id": "520fa923498e4f5e2623f65d",
+      "name": "Park Farm Camping",
+      "photo": "",
+      "location": {
+        "lat": 51.64971,
+        "lng": -4.801465,
+        "formattedAddress": ["Manorbier", "Tenby", "SA70 7SU", "United Kingdom"]
+      }
+    },
+    {
+      "id": "57aefd14498e1119f9a7d777",
+      "name": "Skrinkle Bay Camping",
+      "photo": "",
+      "location": {
+        "lat": 51.643813,
+        "lng": -4.777371,
+        "formattedAddress": ["Pembrokeshire Coast Path", "Manorbier", "Tenby", "SA72 6DY", "United Kingdom"]
+      }
+    },
+    {
+      "id": "502ffd66e4b07f473a182996",
+      "name": "St Davids Camping and Caravanning Club Site",
+      "photo": "",
+      "location": {
+        "lat": 51.929534912109375,
+        "lng": -5.192295074462891,
+        "formattedAddress": ["Dwr Cwmwdig Berea (St Davids)", "Haverfordwest", "SA62 6DW", "United Kingdom"]
+      }
+    },
+    {
+      "id": "4c029932f56c2d7f9d9f1b66",
+      "name": "Trevayne Farm Caravan & Camping Park",
+      "photo": "",
+      "location": {
+        "lat": 51.69506386177955,
+        "lng": -4.690454848182629,
+        "formattedAddress": ["Monkstone", "Saundersfoot", "Pembrokeshire", "SA69 9DL", "United Kingdom"]
+      }
+    },
+    {
+      "id": "539c8bc3498e723ddb2bf8f5",
+      "name": "West Wales Camping Pods",
+      "photo": "",
+      "location": {
+        "lat": 51.863559,
+        "lng": -4.642511,
+        "formattedAddress": ["Plasbach", "Whitland", "SA34 0SE", "United Kingdom"]
+      }
+    }
+  ]
+}
