@@ -67,7 +67,6 @@ class App extends Component {
     }).catch(error => {
       console.log('There was an error fetching the location photos', error)
       //Let the user know there was an error fetching results and to try again.
-      this.setState({errorLoadingAPI: true}) // Set the state to try and force reload. If not then set the state to show the error message to user on the page.
     });
   }
 
@@ -83,13 +82,13 @@ class App extends Component {
     iFrames.tabIndex = -1;
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getSites();
-    this.noFocusElements();
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
     //this.assignPhotos();
+    this.noFocusElements();
   }
 
   render() {

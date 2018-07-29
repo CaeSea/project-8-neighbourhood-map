@@ -12,14 +12,20 @@ class InfoWindow extends Component {
   trapTabKey = (event) => { // This locks focus into a infoWindow when opened.
 
     const closeBtn = this.closeBtn;
+    const focusElements = document.getElementsByClassName("focusable");
+    const lastTab = focusElements[2];
 
     if(event.keyCode === 9) {
       if(event.shiftKey) {
-        event.preventDefault();
-        closeBtn.focus();
+        if(document.activeElement === closeBtn) {
+          event.preventDefault();
+          lastTab.focus()
+        }
       } else {
-        event.preventDefault();
-        closeBtn.focus();
+        if(document.activeElement === lastTab) {
+          event.preventDefault();
+          closeBtn.focus();
+        }
       }
     }
     if(event.keyCode === 27) {
@@ -33,10 +39,10 @@ class InfoWindow extends Component {
     return(
       <div className="info-window">
         <div className="info-window-content">
-          <h1>{ name }</h1>
-          <button aria-label="Close" ref={(close) => { this.closeBtn = close; }} className="close-infowindow" onClick={() => toggleInfoOpen('',{lat: 51.801881, lng: -4.971565})}>&times;</button>
+        <button aria-label="Close" ref={(close) => { this.closeBtn = close; }} className="close-infowindow focusable" onClick={() => toggleInfoOpen('',{lat: 51.801881, lng: -4.971565})}>&times;</button>
+          <h1 className="focusable" tabIndex="0">{ name }</h1>
           <div className="location-img" style={{ backgroundImage: `url("${this.props.img?this.props.img : `http://via.placeholder.com/128x193?text=No%20Image`}")`}}></div>
-          <p><strong>Address:</strong> { address === 'United Kingdom' ? 'No Address Available' :  address }</p>
+          <p className="focusable" tabIndex="0"><strong>Address:</strong> { address === 'United Kingdom' ? 'No Address Available' :  address }</p>
         </div>
       </div>
     )
