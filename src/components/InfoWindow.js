@@ -65,7 +65,8 @@ class InfoWindow extends Component {
 InfoWindow.propTypes = {
   toggleInfoOpen: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
-  address: PropTypes.string.isRequired
+  address: PropTypes.string.isRequired,
+  photoApiFail: PropTypes.bool.isRequired
 }
 
 export default InfoWindow

@@ -150,7 +150,8 @@ class Main extends Component { //Main component that holds listview and map info
     locations: PropTypes.array.isRequired,
     toggleInfoOpen: PropTypes.func.isRequired,
     handleKeyPressInfoWindow: PropTypes.func.isRequired,
-    locationId: PropTypes.string.isRequired
+    locationId: PropTypes.string.isRequired,
+    photoApiFail: PropTypes.bool.isRequired
   }
 
 }

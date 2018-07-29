@@ -33,7 +33,8 @@ Marker.propTypes = {
   indexedLocation: PropTypes.string.isRequired,
   img: PropTypes.string,
   address: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired
+  index: PropTypes.number.isRequired,
+  photoApiFail: PropTypes.bool.isRequired
 }
 
 export default Marker
